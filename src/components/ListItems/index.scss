@@ -1,0 +1,45 @@
+.accordion{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    .alternate{
+        transform:rotate(180deg);
+    }
+    .accordion-title{
+        font: bold;
+        font-size: large;
+        display: flex;
+    }
+    .items-detail{
+        padding: 12px;
+    }
+    .accordion-item{
+        padding: 5px 12px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        span{
+            font-size: 14px;
+        }
+    }
+}
+.card-widget{
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e7eaef;
+    border-radius: 6px;
+    box-shadow: 0 3px 24px #0000000f;
+    cursor: pointer;
+    // display: flex;
+    flex-direction: row-reverse;
+    height: auto;
+    list-style: none;
+    opacity: 1;
+    // outline: none!important;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    transition: transform .2s,-webkit-transform .2s;
+}

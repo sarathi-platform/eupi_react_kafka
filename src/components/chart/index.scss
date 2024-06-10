@@ -1,0 +1,52 @@
+.information-container {
+    display: flex;
+    width: 48%;
+    margin: 15px 0px;
+}
+
+.donut-main {
+    display: flex;
+    justify-content: center;
+
+    .donut-style {
+        min-width: 350px;
+        min-height: 350px;
+    }
+
+    // align-items: center;
+}
+
+.informationHolder {
+    width: 430px;
+    padding-left: 35px;
+}
+
+.main-information {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-digit {
+    text-align: left;
+    margin-left: 20px;
+    font-size: 0.9rem;
+
+    :first-child {
+        font-weight: 600;
+        padding: 3px;
+    }
+
+    div {
+        padding: 3px;
+    }
+}
+
+.info-heading {
+    display: flex;
+    align-items: center;
+}
+
+.titleHolder {
+    text-align: center;
+}

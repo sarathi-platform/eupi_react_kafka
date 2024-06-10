@@ -1,0 +1,93 @@
+.main{
+    height: 100vh;
+    width: 100%;
+    background-color: #f2f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    overflow: auto;
+
+}
+.status{
+    // margin-top: 8%;
+  
+    margin: auto;
+    // margin-top: 10%;
+    /* align-items: center; */
+    /* background: #334155; */
+    border: 1px solid #e7eaef;
+    border-radius: 6px;
+    box-shadow: 0 3px 24px rgba(0, 0, 0, 0.0588235294);
+    cursor: pointer;
+    flex-direction: row-reverse;
+    /* height: auto; */
+    list-style: none;
+    /* opacity: 1; */
+    padding: 15px;
+    width: 80%;
+    background-color: #fff;
+    margin-top: 8%;
+}
+.status-detail{
+    width: 80%;
+    margin:auto;
+    // .date-picker{
+    //     display: flex;
+    //     align-items: center;
+    // }
+    .datepicker-main{
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .date-input{
+        border: 1px solid #e7eaef;
+        border-radius: 6px;
+        box-shadow: 0 3px 24px rgba(0, 0, 0, 0.0588235294);
+        cursor: pointer;
+        flex-direction: row-reverse;
+        /* height: auto; */
+        list-style: none;
+        /* opacity: 1; */
+        padding: 8px;
+    }
+    :first-child{
+        margin-right: 20px;
+    }
+   }
+    .jobs{
+        display: flex;
+    }
+}
+.card-info{
+    width: 50%;
+}
+// .cards-widget{
+//     align-items: center;
+//     background: #fff;
+//     border: 1px solid #e7eaef;
+//     border-radius: 6px;
+//     box-shadow: 0 3px 24px #0000000f;
+//     cursor: pointer;
+//     // display: flex;
+//     flex-direction: row-reverse;
+//     height: auto;
+//     list-style: none;
+//     opacity: 1;
+//     // outline: none!important;
+//     overflow: hidden;
+//     padding: 15px;
+//     position: relative;
+//     text-align: center;
+//     transition: -webkit-transform .2s;
+//     transition: transform .2s;
+//     transition: transform .2s,-webkit-transform .2s;
+//     width: 30%;
+//     padding: 42px 10px;
+//     // height: 20%;
+//     }
+.card-widget:last-child{
+    margin-bottom: 20px
+}

@@ -1,0 +1,52 @@
+.details {
+  padding: 10px;
+
+  > div {
+    word-wrap: break-word;
+  }
+
+  .text-style {
+    display: flex;
+    /* flex-direction: column; */
+    padding: 10px 10%;
+    // justify-content: space-evenly;
+
+    h4 {
+      margin-bottom: 10px;
+      width: 40%;
+    }
+
+    textarea {
+      margin-top: 10px;
+    }
+  }
+
+  .btn-style {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #222e50;
+    color: #fff;
+    margin-top: 10px;
+  }
+
+  // Ensure styles for ReactJson
+  .react-json-view {
+    width: 50%;
+    .object-key-val {
+      .object-key, .object-value {
+        &::before {
+          display: none !important; // Hide the line before the key and value
+        }
+      }
+    }
+
+    // Additional selectors to ensure the line is hidden
+    .object-key-val > span {
+      border-left: none !important;
+    }
+
+    .object-key-val > .object-content > .object-key-val {
+      border-left: none !important;
+    }
+  }
+}
