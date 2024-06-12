@@ -91,3 +91,18 @@
 .card-widget:last-child{
     margin-bottom: 20px
 }
+.spinner-dashboard{
+    margin: auto;
+}
+.item-img.img-loader {
+    display: block;
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 50%;
+    margin-right: 25px;
+    flex-shrink: 0;
+    &.action-loader{
+        width:30px !important;
+        height: 30px !important;
+    }
+}

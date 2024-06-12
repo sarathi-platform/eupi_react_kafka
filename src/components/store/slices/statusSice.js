@@ -1,17 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Async thunk to fetch status data
 export const fetchStatusData = createAsyncThunk(
   'status/fetchStatusData',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get('https://uat.eupi-sarthi.in/sync-server/sync/eventsByStatus');
-      console.log('API Response:', response.data); // Log the response to check
+      console.log('API Response:', response.data);
       return response.data;
     } catch (err) {
       console.error('Full Error:', err); // Log the full error object for more details
-
       if (!err.response) {
         console.error('Network or other error:', err.message); // Log a more specific message for network errors
         return rejectWithValue({ message: 'Network Error' });

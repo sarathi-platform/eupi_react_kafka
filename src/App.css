@@ -3,9 +3,24 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 /* Set the height of the root element */
 #root {
   height: 100%;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 100px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c2c9d8;
+  border-radius: 7px;
+  position: absolute;
 }

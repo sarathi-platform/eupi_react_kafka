@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './index.scss';
 import EventTable from '../EventTable';
 import { useSelector } from 'react-redux';
+import { fetchChangedEventData } from '../services/event';
+import spinner from './../../assets/images/spinner.svg'
 
 const Event = () => {
   const [showDetail, setShowDetail] = useState(false);
@@ -20,6 +22,22 @@ const Event = () => {
     CONSUMER_FAILED: true,
     ERROR: true,
   });
+  const [loader,setLoader] = useState(false);
+  
+  const [consolidatedData,setConsolatedData] = useState('');
+
+  // const fetchData = useCallback(async () => {
+  //   setLoader(true)
+  //   const resultAction = await fetchChangedEventData(selectedData);
+  //     if (resultAction) {
+  //       setEventData(resultAction.data);
+  //     } else {
+  //       // Handle the error if needed
+  //       console.error('Failed to fetch event data:', resultAction.payload || resultAction.error);
+  //     }
+  //   setLoader(false);
+  // }, [dispatch, payloadData]);
+
 
   const dropdownLabels = [
     'all',
@@ -39,11 +57,14 @@ const Event = () => {
   const selectedData = useSelector((state) => state.selectedData);
   const [empty, setEmpty] = useState(false);
 
-  const handleSelectedItems = () => {
+  const handleSelectedItems = async() => {
     if (selectedData.length < 1) {
       console.log('empty');
     } else {
-      console.log(selectedData);
+      console.log(selectedData)
+      setLoader(true)
+      await fetchChangedEventData(selectedData)
+      setLoader(false)
     }
   };
 
@@ -137,13 +158,15 @@ const Event = () => {
       .filter(option => option !== 'all' && selectedOptions[option])
       .map(option => statusMap[option]);
 
-    const consolidatedData = {
-      statusList,
+    const data = {
+      status: statusList,
       startDate: date.startDate,
       endDate: date.endDate,
     };
 
-    console.log(consolidatedData)
+    setConsolatedData(data)
+
+    // console.log(consolidatedData)
 
     setShowDetail(!showDetail);
     setEmpty(true);
@@ -204,7 +227,7 @@ const Event = () => {
             </div>
             <div className='datepicker-side'>
               <label>End Date</label>
-              <input onChange={handleDateChange} name='endDate' type='date' value={date.endDate} className='date-input' />
+              <input onChange={handleDateChange} name='endDate' type='date' value={date.endDate} className='date-input' max={currentDate.toISOString().slice(0, 10)} />
             </div>
             <div>
               <button type='button' className='btn-style' onClick={handleDateSubmit}>Select</button>
@@ -212,7 +235,9 @@ const Event = () => {
           </div>
         </div>
       </div>
-      {showDetail && <EventTable />}
+     {loader ? <img src={spinner} alt="loader" className='item-img img-loader' /> : 
+      showDetail && <EventTable payloadData={consolidatedData}/>
+              }
     </div>
   );
 };

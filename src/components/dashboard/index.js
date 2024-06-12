@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Chart from '../chart';
 import './index.scss';
 import { fetchStatusData } from '../store/slices/statusSice';
+import spinner from './../../assets/images/spinner.svg'
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,7 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, [dispatch]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
 
   if (error) {
     return <div>{error.message || 'Something is wrong'}</div>;
@@ -32,9 +31,13 @@ const Dashboard = () => {
   console.log('Status Data:', data);
   return (
     <div className='main'>
-      <div className='status'>
-        {data?.data?.length > 0 && <Chart statusData={data.data} />}
-      </div>
+      {loading ? <div className='spinner-dashboard'><img src={spinner} alt="loader" className='item-img img-loader' /> </div> :
+
+        <div className='status'>
+          {data?.data?.length > 0 && <Chart statusData={data.data} />}
+
+        </div>
+      }
     </div>
   );
 };

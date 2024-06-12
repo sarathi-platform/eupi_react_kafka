@@ -1,19 +1,11 @@
-.information-container {
-    display: flex;
-    width: 48%;
-    margin: 15px 0px;
-}
-
 .donut-main {
     display: flex;
     justify-content: center;
 
     .donut-style {
-        min-width: 350px;
-        min-height: 350px;
+        min-width: 370px;
+        min-height: 370px;
     }
-
-    // align-items: center;
 }
 
 .informationHolder {
@@ -25,6 +17,12 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.information-container {
+    display: flex;
+    width: 48%;
+    margin: 15px 0px;
 }
 
 .info-digit {
@@ -45,6 +43,25 @@
 .info-heading {
     display: flex;
     align-items: center;
+}
+
+/* Add styles for vertical alignment of legend items */
+.chartjs-legend {
+    display: flex;
+    flex-direction: column; // Align legend items vertically
+    align-items: flex-start;
+}
+
+.chartjs-legend li {
+    list-style-type: none;
+    margin-bottom: 8px; // Add space between legend items
+    display: flex;
+    align-items: center;
+}
+
+.chartjs-legend span {
+    display: inline-block;
+    margin-left: 8px;
 }
 
 .titleHolder {

@@ -32,7 +32,8 @@
     },
     development: {
       // API_ROOT: 'https://sarathi.lokos.in',
-      API_ROOT: 'https://uat.eupi-sarthi.in'
+      // API_ROOT: 'https://dev.eupi-sarthi.in'
+      API_ROOT : 'https://uat.eupi-sarthi.in'
     },
   };
   

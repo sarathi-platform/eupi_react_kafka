@@ -9,7 +9,7 @@ const Chart = ({ statusData }) => {
     const [count, setCount] = useState([]);
     const [label, setLabel] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
-
+    const [hiddenLegends, setHiddenLegends] = useState({});
     useEffect(() => {
         if (statusData && statusData.length > 0) {
             const counts = statusData.map((item) => item.count);
@@ -30,12 +30,14 @@ const Chart = ({ statusData }) => {
                 backgroundColor: [
                     'rgba(75, 192, 192, 0.6)',
                     'rgba(255, 206, 86, 0.6)',
-                    'rgba(255, 99, 132, 0.6)'
+                    'rgba(255, 99, 132, 0.6)',
+                    '#95D2B3'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
+                    '#95D2B3'
                 ],
                 borderWidth: 0,
             },
@@ -45,49 +47,76 @@ const Chart = ({ statusData }) => {
     const backgroundColors = [
         'rgba(75, 192, 192, 0.6)',
         'rgba(255, 206, 86, 0.6)',
-        'rgba(255, 99, 132, 0.6)'
+        'rgba(255, 99, 132, 0.6)',
+        '#95D2B3'
     ];
 
     const centerTextPlugin = {
-      id: 'centerTextPlugin',
-      beforeDraw: function (chart) {
-          const { ctx, width, height } = chart;
-          ctx.restore();          
-          var fontSize = (height / 300).toFixed(2);
-          ctx.font = fontSize + "em sans-serif";
-          ctx.textBaseline = 'middle';
-          ctx.textAlign = 'center';
-  
-          const text = `Count : ${statusData.map((item) => item.count).reduce((a, b) => a + b, 0)}`
-          const textX = 350 / 2;
-          const textY = (height - 50) / 2 ;
-  
-          ctx.clearRect(0, 0, width, height);
-          ctx.fillText(text, textX, textY);
-          ctx.save();
-      }
-  };
-  const options = {
-    plugins: {
-        legend: {
-            position: 'bottom',
-            align: 'center',
-            labels: {
-                fontSize: 12,
-                fontColor: 'black'
-            }
-        },
-        centerTextPlugin
-    }
-};
+        id: 'centerTextPlugin',
+        beforeDraw: function (chart) {
+            const { ctx, width, height } = chart;
+            ctx.restore();
+            var fontSize = (height / 300).toFixed(2);
+            ctx.font = fontSize + "em sans-serif";
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
 
+            const text = `Count : ${statusData.map((item) => item.count).reduce((a, b) => a + b, 0)}`;
+            // for half const textX = width / 2;
+            // const textY = 400 / 2;
+            const textX = width / 2;
+            const textY = 300 / 2;
 
-  
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillText(text, textX, textY);
+            ctx.save();
+        }
+    };
+
+    const options = {
+        // rotation: -90,
+        // circumference: 180,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                align: 'start',
+                labels: {
+                    fontSize: 12,
+                    fontColor: 'black',
+                    boxWidth: 10,
+                    padding: 20,
+                    usePointStyle: true,
+                    generateLabels: function(chart) {
+                        return chart.data.labels.map((label, index) => ({
+                            text: label,
+                            fillStyle: chart.data.datasets[0].backgroundColor[index],
+                            hidden: chart.getDatasetMeta(0).data[index].hidden,
+                            index: index,
+                            strikethrough: hiddenLegends[label]
+                        }));
+                    },
+                },
+                onClick: function (e, legendItem, legend) {
+                    const index = legendItem.index;
+                    const chart = legend.chart;
+                    const meta = chart.getDatasetMeta(0);
+                    meta.data[index].hidden = !meta.data[index].hidden;
+                    chart.update();
+
+                    setHiddenLegends((prevState) => ({
+                        ...prevState,
+                        [chart.data.labels[index]]: !prevState[chart.data.labels[index]],
+                    }));
+                }
+            },
+            centerTextPlugin
+        }
+    };
 
     return (
         <div className='donut-main'>
             <div className='donut-style'>
-                <Doughnut data={data} options={options} plugins={[centerTextPlugin]}/>
+                <Doughnut data={data} options={options} plugins={[centerTextPlugin]} />
             </div>
 
             <div className='informationHolder'>

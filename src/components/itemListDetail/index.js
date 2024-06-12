@@ -36,7 +36,7 @@ const ItemListDetail = ({ itemCards, details, onDetailsChange }) => {
         <h4>Metadata:</h4>
         <ReactJson
           className="custom-json-view"
-          src={details.metadata} // No need to parse, it's already a JSON object
+          src={JSON.parse(details.metadata)} // No need to parse, it's already a JSON object
           onEdit={(edit) => handleJsonChange(edit, 'metadata')}
           onAdd={(add) => handleJsonChange(add, 'metadata')}
           // onDelete={(del) => handleJsonChange(del, 'metadata')}
