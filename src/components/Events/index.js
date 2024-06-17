@@ -59,9 +59,8 @@ const Event = () => {
 
   const handleSelectedItems = async() => {
     if (selectedData.length < 1) {
-      console.log('empty');
+      console.log('Empty Data');
     } else {
-      console.log(selectedData)
       setLoader(true)
       await fetchChangedEventData(selectedData)
       setLoader(false)

@@ -9,8 +9,7 @@ export const selectedDataSlice = createSlice({
       if (existingIndex === -1) {
         state.push(action.payload);
       } else {
-        state.splice(existingIndex, 1);
-        state.push(action.payload);
+        state[existingIndex] = action.payload;
       }
     },
     removeSelectedData: (state, action) => {
@@ -25,8 +24,7 @@ export const selectedDataSlice = createSlice({
         if (existingIndex === -1) {
           state.push(item);
         } else {
-          state.splice(existingIndex, 1);
-          state.push(item);
+          state[existingIndex] = item;
         }
       });
     }

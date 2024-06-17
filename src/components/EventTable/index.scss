@@ -3,10 +3,23 @@
   border-radius: 1px;
 }
 
+.data-empty{
+  margin: auto;
+}
+
 .table-main {
   // display: flex;
   justify-content: space-around;
   padding: 4% 0;
+}
+
+table tbody tr{
+  word-wrap: break-word;
+}
+
+
+table thead tr th:last-child{
+  padding-left: 5%;
 }
 
 body {
@@ -23,15 +36,22 @@ body {
   border-radius: 8px;
   width: 90%;
   margin: auto;
+  table-layout: fixed;
+  margin-bottom: 2%;
 }
-.table-style .td{
+.table-style td{
   min-width: 100% !important;
+}
+
+.table-style td{
+   padding-right: 20px !important;
 }
 
 .data-table th, .data-table td {
   padding: 20px;
   text-align: left;
   font-size: 14px;
+  padding-right: 0px;
 }
 
 .data-table th {
@@ -47,64 +67,22 @@ body {
 .data-table tr {
   transition: background-color 0.3s ease;
   cursor: pointer;
+  // th:first-child{
+  //   position: absolute;
+  // }
 }
 
 .data-table tr:hover {
   background-color: #f1f1f1;
 }
 
-// .data-table .row.expanded {
-//   background-color: #e6f7ff;
-// }
-
-// .card-widget {
-//   padding: 15px;
-//   background-color: #f9f9f9;
-//   border: 1px solid #ddd;
-//   margin-top: 10px;
-// }
-
-// .items-detail {
-//   padding: 10px;
-//   background-color: #fff;
-//   border: 1px solid #ddd;
-// }
-
-// .details .text-style {
-//   margin-bottom: 10px;
-// }
-
-// .details h4 {
-//   margin: 0 0 5px;
-// }
-
-// .details textarea {
-//   width: 100%;
-//   padding: 8px;
-//   border: 1px solid #ddd;
-//   border-radius: 4px;
-// }
-
-// .btn-style {
-//   padding: 8px 16px;
-//   background-color: #4CAF50;
-//   color: white;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-// }
-
-// .btn-style:hover {
-//   background-color: #45a049;
-// }
 .data-table tr:hover {
-  background-color: #e0e0e0; /* Change the color as needed */
+  background-color: #e0e0e0;
 }
 
 .data-table input[type="checkbox"] {
   cursor: pointer;
   width: 30px;
   height: 20px;
-  // position: absolute;
 }
 

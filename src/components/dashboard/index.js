@@ -28,7 +28,6 @@ const Dashboard = () => {
     return <div>{error.message || 'Something is wrong'}</div>;
   }
 
-  console.log('Status Data:', data);
   return (
     <div className='main'>
       {loading ? <div className='spinner-dashboard'><img src={spinner} alt="loader" className='item-img img-loader' /> </div> :

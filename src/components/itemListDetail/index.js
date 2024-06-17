@@ -13,11 +13,10 @@ const ItemListDetail = ({ itemCards, details, onDetailsChange }) => {
     onDetailsChange(name, updatedValue);
   };
 
-  const handleSubmit = () => {
-    console.log('Updated Payload:', details.payload);
-    console.log('Updated Metadata:', details.metadata);
-    // Add your submit logic here
-  };
+  // const handleSubmit = () => {
+  //   console.log('Updated Payload:', details.payload);
+  //   console.log('Updated Metadata:', details.metadata);
+  // };
 
   return (
     <div className="details">
